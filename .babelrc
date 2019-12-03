@@ -1,0 +1,7 @@
+{
+    "ignore": [
+      "./src/utils/mui.js"
+    ],
+    "plugins": ["transform-remove-strict-mode"]
+}
+ 
