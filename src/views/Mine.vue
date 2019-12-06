@@ -90,21 +90,21 @@
                    </li>
                      <li>
                         <router-link :to="{name:'myorder',params:{active:4}}">
-                       <img src="../assets/image/mine_daifahuo.png" alt="">
+                       <img src="../assets/image/mine_daishouhuo.png" alt="">
                         </router-link>
-                       <p>租用中</p>
+                       <p>待收货</p>
                    </li>
                      <li>
                          <router-link :to="{name:'myorder',params:{active:5}}">
-                       <img src="../assets/image/mine_daishouhuo.png" alt="">
+                       <img src="../assets/image/mine_yiwancheng.png" alt="">
                         </router-link>
-                       <p>待结算</p>
+                       <p>已完成</p>
                    </li>
                      <li>
                     <router-link :to="{name:'myorder',params:{active:6}}">
-                       <img src="../assets/image/mine_yiwancheng.png" alt="">
+                       <img src="../assets/image/mine_tuikuan.png" alt="">
                      </router-link>
-                       <p>已完成</p>
+                       <p>退款/售后</p>
                    </li>
                </ul>
            </div>
@@ -119,14 +119,14 @@
                </div>
                <ul>
                    <li>
-                       <img src="../assets/image/mine_youhuiquan.png" alt="">
-                        <p>收藏夹</p>
+                       <img src="../assets/image/mine_remember.png" alt="">
+                        <p>生日纪念日提醒</p>
                    </li>
                      <li>
                          <router-link :to="{name:'list',params:{activeDescript:'超值套餐'}}">
-                       <img src="../assets/image/mine_qyzulin.png" alt="">
+                       <img src="../assets/image/mine_youhuiquan.png" alt="">
                        </router-link>
-                       <p>企业租赁</p>
+                       <p>优惠券</p>
                    </li>
                      <li>
                          <router-link to='suggested'>
@@ -426,8 +426,8 @@ margin-top: 0.2rem;
 }
 
 .myorder ul li img{
-    width: 0.23rem;
-    height: 0.2rem;
+    width: 0.21rem;
+    height: 0.22rem;
     margin-left: 0.26rem;
 }
 .myorder ul li p{
@@ -467,11 +467,11 @@ margin-top: 0.2rem;
 
 .service ul li img{
     width: 0.22rem;
-    height: 0.19rem;
-    margin-left: 0.26rem;
+    height: 0.22rem;
+    margin-left: 0.3rem;
 }
 .service ul li p{
-    width: 0.73rem;
+    width: 0.85rem;
     margin-top: 0.13rem;
 }
 .tuijian{

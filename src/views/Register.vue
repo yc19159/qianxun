@@ -129,7 +129,6 @@ export default {
               if(regtel.test(phonenumber)){
                 //  if(this.code==this.testCode){
                      if(regpwd.test(pwd)){
-     
                        if(pwd==dbpwd){
                            var checkInput=document.getElementById('check');
                            if(document.getElementById('check').checked){
@@ -214,7 +213,6 @@ export default {
 }
 .login-content{
  width: 3.43rem;
- /* height: ; */
  margin: auto;
  margin-top: 0.2rem;
  overflow: hidden;

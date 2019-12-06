@@ -142,6 +142,36 @@ export default new VueRouter({
   name: 'showcollect',
   component: ()=> import('@/views/ShowCollect.vue'),
 },
+{
+  path: '/anniversary',
+  name: 'anniversary',
+  component: ()=> import('@/views/Anniversary.vue'),
+},
+{
+  path: '/setbirthday/:id?',
+  name: 'setbirthday',
+  component: ()=> import('@/views/SetBirthday.vue'),
+},
+{
+  path: '/setlove/:id?',
+  name: 'setlove',
+  component: ()=> import('@/views/SetLove.vue'),
+},
+{
+  path: '/setanniversary/:id?',
+  name: 'setanniversary',
+  component: ()=> import('@/views/SetAnniversary.vue'),
+},
+{
+  path: '/setcustomize/:id?',
+  name: 'setcustomize',
+  component: ()=> import('@/views/SetCustomize.vue'),
+},
+{
+  path: '/anniversarydetail/:id',
+  name: 'anniversarydetail',
+  component: ()=> import('@/views/AnniversaryDetail.vue'),
+},
 
   ]
 })

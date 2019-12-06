@@ -19,6 +19,7 @@ import { Notify } from 'vant';
 import { Area } from 'vant';
 import VueTouch from 'vue-touch';
 import { List } from 'vant';
+import { DatetimePicker } from 'vant';
 
 Vue.use(List);
 Vue.use(VueTouch, {name: 'v-touch'})
@@ -29,7 +30,7 @@ VueRouter.prototype.push = function push(location) {
 
 
 Vue.use(Area);
-
+Vue.use(DatetimePicker);
 Vue.use(Notify);
 
 Vue.use(Swipe).use(SwipeItem);

@@ -13,7 +13,7 @@
             
              <img src="../assets/image/login_toLogin.png" class="login" @click="todoLogin" alt="这是登录按钮">
              <router-link to="/register">
-              <p class="register" >注册</p>
+              <p class="register" > 注册</p>
               </router-link>
               <router-link to="" class="findpwd">
                   忘记密码？去找回
