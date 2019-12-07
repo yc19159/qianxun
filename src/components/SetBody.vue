@@ -9,7 +9,7 @@
         </div>
         <div class="contentDiv">
               <span class="contentSpan">日期</span>
-             <input type="text" placeholder="" id="text"  v-model="date" @click="showdate">
+             <input type="text" placeholder="2019-01-01" id="text"  v-model="date" @click="showdate">
         </div>
         <div class="contentDiv">
               <span class="contentSpan" >提醒</span>
@@ -28,7 +28,6 @@
     <div class="pick" ref="pick">
        <div class="detail">
           <div class="detail-content">
-            <span class="close" @click="close">×</span>
               <div class="pickDiv">
                  <p class="pickP">日程发生时</p>
               </div>
@@ -45,12 +44,12 @@
     <div class="pickDate" ref="pickDate">
        <div class="detail">
           <div class="detail-content">
-            <span class="close" @click="close">×</span>
               <van-datetime-picker
               v-model="currentDate"
               type="date"
               :min-date="minDate"
               @confirm="confirm"
+              @cancel="cancel"
               />
                <!-- <div> -->
               <!-- </div> -->
@@ -70,7 +69,7 @@ export default {
         return {
             text:[{text:"当天"},{text:"一天前"},{text:"两天前"},{text:"三天前"}],
             name: "",
-            date: "2019-01-01",
+            date: "",
             beizhu: "",
             checked: false,
             reminderTime:[],
@@ -178,11 +177,15 @@ export default {
           console.log(this.date)
           // console.log(Date.parse(this.date))
         },
+        cancel(){
+           this.$refs.pickDate.style.display='none';
+        }
 
     },
     mounted() {
       console.log(this.setType);
-      
+      this.changeSearch(false);
+      var that=this;
       setTimeout(() => {
         console.log(document.getElementsByClassName('van-picker__cancel')[0].style.background)
        document.getElementsByClassName('van-picker__cancel')[0].style.background='none';
@@ -191,8 +194,17 @@ export default {
        document.getElementsByClassName('van-picker__confirm')[0].style.background='none';
          document.getElementsByClassName('van-picker__confirm')[0].style.border='0';
       }, 0);
-      
-        this.changeSearch(false);
+      document.onclick=function(e){
+            var event=e||window.event;
+            var target=event.target || event.srcElement;
+           if(target.className=='pick'&&target.className!='detail'){
+               that.$refs.pick.style.display='none';
+           }   
+           if(target.className=='pickDate'&&target.className!='detail'){
+               that.$refs.pickDate.style.display='none';
+           } 
+        };
+        
         if(this.$route.params.id>=0){
          this.detail=JSON.parse(sessionStorage.anniversarydetail)
          console.log(this.detail)

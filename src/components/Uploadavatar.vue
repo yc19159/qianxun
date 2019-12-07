@@ -2,7 +2,7 @@
     <!-- <div id="photo"> -->
         <div class="tx-img">
         <img :src="touxiang" alt="" @click="uploadImg"  class="userImg" ref="touxiang">
-        <input @change="shangchuan" type="file" ref="upload" accept="image/*" class="hiddenInput">
+        <input v-show="false" @change="shangchuan" type="file" ref="upload" accept="image/*" class="hiddenInput">
         
     </div>
 </template>
@@ -60,8 +60,8 @@ export default {
                 url:"/user/uploadAvatar",
                 method:"POST",
                 data:data,
-                // contentType:false,
-                // processData:false,
+                contentType:false,
+                processData:false,
             }).then(res=>{
                 //  this.touxiang =res.data.data.avatarUrl;   // 配置代理 
                 console.log(res);
@@ -122,7 +122,7 @@ export default {
     width:0.8rem;
     height:0.8rem;
     border-radius: 50%;
-    margin-top: 0.1rem
+    margin-top: 0.1rem;
 }
 
 .hiddenInput{

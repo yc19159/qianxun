@@ -101,7 +101,7 @@ export default {
             sessionStorage.anniversarydetail=JSON.stringify({
                 title:this.list[index].name,
                 time:this.list[index].date,
-                days: 50,
+                days: this.getdays(index),
                 type: this.list[index].type,
                 remark:this.list[index].remark,
                 reminderTime:this.list[index].reminderTime,
@@ -117,6 +117,9 @@ export default {
             var setDays=Date.parse(new Date(this.list[index].date))
             var cha=setDays- nowtimestamp;
             var days=(cha/(1000*60*60*24)).toFixed(0)
+            if(days=='-0'){
+                days=0
+            }
              return days
             // console.log(Date.parse(new Date("2019-12-6")))
             

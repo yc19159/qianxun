@@ -23,11 +23,10 @@
     <div class="pick" ref="pick">
        <div class="detail">
           <div class="detail-content">
-            <span class="close" @click="close">×</span>
               <div class="pickDiv">
                  <p class="pickP" @click="reset">重新编辑内容</p>
               </div>
-              <div class="pickDiv" :style="{'position':'relative'}">
+              <div class="pickDiv" @click="uploadImg" :style="{'position':'relative'}">
                  <p class="pickP">更换背景图</p>
                   <!-- this.$refs.upload.click(); -->
                  <input @change="shangchuan" type="file" ref="upload" accept="image/*" class="hiddenInput">
@@ -75,9 +74,26 @@ export default {
            this.$router.push({name:'anniversary'});
          })
        },
+       uploadImg(){
+            this.$refs.upload.click();
+         },
        shangchuan(){
-
+         let file = this.$refs.upload.files[0];
+            console.log(file);
+            // 表单  Form    name 
+            let data = new FormData() ;  // 新建 表单对象  
+            data.append('file',file);
+            data.append('id',this.$route.params.id)
+            console.log(data)
+            this.$axios.post('/remind/uploadBackground',
+              data,
+            ).then(res=>{
+                 console.log(res)
+                 this.backgroundImg=res.data.data.backgroundImg;
+                  this.$refs.pick.style.display='none';
+            })
        },
+          
        reset(){
          if(this.detail.type==1){
            this.$router.push({name:'setbirthday',params:{id:this.$route.params.id}});
@@ -98,7 +114,14 @@ export default {
         this.changeSearch(false);
         this.detail=JSON.parse(sessionStorage.anniversarydetail);
         this.backgroundImg=this.detail.img;
-       console.log(this.detail)
+        var that=this
+        document.onclick=function(e){
+            var event=e||window.event;
+            var target=event.target || event.srcElement;
+           if(target.className=='pick'&&target.className!='detail-content'){
+               that.$refs.pick.style.display='none';
+           }   
+        };
     },
 }
 </script>
@@ -106,7 +129,8 @@ export default {
 <style lang='scss' scoped>
 .hiddenInput{
   position: absolute;
-  // display: none;
+  display: none;
+  left: 0;
   width: 100%;
   height: 100%;
 }
@@ -176,8 +200,8 @@ export default {
 .day{
     position: absolute;
     height: 0.29rem;
-    top: 0.47rem;
-    left: 1.95rem;
+    top: 0.45rem;
+    right: 0.66rem;
     font-size: 0.25rem;
     font-weight: bold;
 }
